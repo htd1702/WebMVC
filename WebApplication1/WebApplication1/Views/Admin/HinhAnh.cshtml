@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication1.Models.HinhAnh>
+
+@{
+    ViewBag.Title = "HinhAnh";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h2>Hình Ảnh</h2>
+    <p>
+        @Html.ActionLink("Thêm hình", "CreateHinhAnh")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tên Hình
+            </th>
+            <th>
+                Hình
+            </th>
+            <th>
+                Ngày Đăng Hình
+            </th>
+            <th>
+                Tựa Đề
+            </th>
+            <th>
+                Lựa Chọn
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UrlHinh)
+                </td>
+                <td>
+                    <img src="~/HinhAnh/@item.UrlHinh" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDangHinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TuaDe)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "EditHinhAnh", new { id = item.HinhAnhID }) |
+                    @Html.ActionLink("Xóa", "DeleteHinhAnh", new { id = item.HinhAnhID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

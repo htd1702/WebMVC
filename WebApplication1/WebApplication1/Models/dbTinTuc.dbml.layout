@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="dbTinTuc">
+  <DataContextMoniker Name="/dbTinTucDataContext" />
+  <nestedChildShapes>
+    <classShape Id="96469e96-2f49-42b5-9b3e-8034305dc055" absoluteBounds="0.5, 3.25, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/dbTinTucDataContext/QuangCao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="774940aa-2449-428e-8b53-e7617d16702d" absoluteBounds="0.515, 3.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bde58a82-e782-4f54-b684-932fde75d6cf" absoluteBounds="4, 3.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/dbTinTucDataContext/HinhAnh" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ace8954-24ca-42de-a956-501d04b2a636" absoluteBounds="4.0150000000000006, 3.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="242efca2-6648-46ca-87ec-aa3e1ca97455" absoluteBounds="6.75, 0.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/dbTinTucDataContext/Admin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3e0db250-9100-4604-af36-285a5115c3a7" absoluteBounds="6.7650000000000006, 1.3350000000000009, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6dffa33d-205c-42e3-8b0e-a0976392968e" absoluteBounds="3.25, 0.75, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/dbTinTucDataContext/BangTin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bed35877-5bb3-4e15-a961-bcc05bccb148" absoluteBounds="3.2650000000000006, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0ffe21c4-4234-43cc-89d1-ff283e371404" absoluteBounds="0.5, 1.25, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/dbTinTucDataContext/LoaiTin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c5cf3f6-2211-4c00-9595-34c3d9c1311c" absoluteBounds="0.51500000000000012, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 1.95274983723958); (5.25 : 1.95274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbTinTucDataContext/Admin/Admin_BangTin" />
+      <nodes>
+        <classShapeMoniker Id="242efca2-6648-46ca-87ec-aa3e1ca97455" />
+        <classShapeMoniker Id="6dffa33d-205c-42e3-8b0e-a0976392968e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 1.84699625651042); (3.25 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbTinTucDataContext/LoaiTin/LoaiTin_BangTin" />
+      <nodes>
+        <classShapeMoniker Id="0ffe21c4-4234-43cc-89d1-ff283e371404" />
+        <classShapeMoniker Id="6dffa33d-205c-42e3-8b0e-a0976392968e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

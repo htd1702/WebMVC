@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebApplication1.Models.LoaiTin>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@Url.Action("Tintheotheloai","TinTuc",new{id=item.LoaiTinID})">
+                        <span style="color:white; font:status-bar;font-weight:bold">@item.TenLoaiTin</span>
+                    </a>
+                </li>
+                
+            }

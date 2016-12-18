@@ -1,0 +1,89 @@
+﻿@using WebApplication1.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebApplication1.Models.BangTin>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)
+        <h6>...</h6>
+    }
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Chào mừng @Session["Username"]</h2>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h4>Tin gần đây của bạn</h4>
+    <p>
+        @Html.ActionLink("Đăng Bài", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tiêu Đề
+            </th>
+            <th>
+                Ngày Đăng
+            </th>
+            <th>
+                Mô Tả
+            </th>
+            <th width="100px">
+                Nội Dung
+            </th>
+            <th>
+                Ảnh Bìa
+            </th>
+            <th>
+                Loại Tin
+            </th>
+            <th>
+                Lựa Chọn
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TieuDe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDang)
+                </td>
+                <td>
+                    @Truncate(item.MoTa, 30)
+                </td>
+                <td>
+                    @Truncate(item.NoiDung, 30)
+                </td>
+                <td>
+                    <img src="@Url.Content("~/HinhTin/" + item.AnhBiaTin)" width="120" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiTin.TenLoaiTin)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.BangTinID }) |
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.BangTinID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.BangTinID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+    <div class="menu">
+        @Html.PagedListPager(Model, page => Url.Action("TinTuc", new { page = page }))
+    </div>
+</div>

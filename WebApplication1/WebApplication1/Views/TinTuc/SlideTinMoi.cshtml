@@ -1,0 +1,11 @@
+﻿@model IEnumerable<WebApplication1.Models.BangTin>
+
+                    @foreach(var tin in Model)
+                    { 
+                        <li>
+                            <a href="@Url.Action("Chitiettin", "TinTuc", new { id = tin.BangTinID })">
+                            <img src="~/HinhTin/@tin.AnhBiaTin" alt="">@tin.TieuDe</a>
+                        </li>
+                    }
+
+

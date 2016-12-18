@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WebApplication1.Models.BangTin>
+
+@foreach (var tin in Model)
+{
+<ul class="spost_nav">
+    <li>
+        <div class="media wow fadeInDown">
+            <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @tin.BangTinID })" class="media-left"> 
+            <img alt="@tin.TieuDe" src="~/HinhTin/@tin.AnhBiaTin"> 
+            </a>
+            <div class="media-body"> 
+                <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @tin.BangTinID })" class="catg_title">
+                    @tin.TieuDe
+                </a> 
+            </div>
+        </div>
+    </li>
+</ul>
+}

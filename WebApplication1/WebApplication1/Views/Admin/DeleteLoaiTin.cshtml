@@ -1,0 +1,32 @@
+﻿@model WebApplication1.Models.LoaiTin
+
+@{
+    ViewBag.Title = "DeleteLoaiTin";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Xoá Thể Loại</h2>
+
+<h3>Bạn chắc là muốn xóa bỏ thể loại này chứ ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Loại Tin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoaiTin)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa Bỏ" class="btn btn-default" /> |
+            @Html.ActionLink("Trở Về", "LoaiTin")
+        </div>
+    }
+</div>

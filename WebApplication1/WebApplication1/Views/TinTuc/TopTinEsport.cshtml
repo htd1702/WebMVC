@@ -1,0 +1,9 @@
+﻿
+<figure class="bsbig_fig">
+    <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @Model.BangTinID })" class="featured_img">
+        <img alt="" src="~/HinhTin/@Model.AnhBiaTin">
+        <span class="overlay"></span>
+    </a>
+    <figcaption> <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @Model.BangTinID })">@Model.TieuDe</a> </figcaption>
+    <p>@Model.MoTa</p>
+</figure>

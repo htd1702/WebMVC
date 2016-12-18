@@ -1,0 +1,168 @@
+﻿@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)
+        <h6>...</h6>
+    }
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<section id="navArea" style="background:url(http://img.cdn.ved.com.vn/web/lmht360/wp-content/themes/_gameplay/images/bg.png)">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav main_nav">
+                @Html.Action("Theloai", "TinTuc")
+            </ul>
+
+        </div>
+    </nav>
+</section>
+<section id="newsSection">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="latest_newsarea">
+                <span>Tin Mới Nhất</span>
+                <ul id="ticker01" class="news_sticker">
+                    @{Html.RenderAction("SlideTinMoi", "TinTuc");}
+                </ul>
+                <div class="social_area">
+                    <ul class="social_nav">
+                        <li class="facebook"><a href="https://www.facebook.com/Lienminh24711"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="sliderSection">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="slick_slider">
+                @foreach(var tin in Model)
+                {
+                    <div class="single_iteam">
+                        <a href="@Url.Action("Chitiettin", "TinTuc", new { id = tin.BangTinID })">
+                            <img src="~/HinhTin/@tin.AnhBiaTin" alt="@tin.TieuDe">
+                        </a>
+                        <div class="slider_article" style="background-color:rgba(0, 0, 0, 0.8)">
+                            <h4>
+                                <a class="slider_tittle" href="@Url.Action("Chitiettin", "TinTuc", new { id = tin.BangTinID })" style="color:white">
+                                    @tin.TieuDe
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="latest_post">
+                <h2><span>Tin Nổi Bật</span></h2>
+                <div class="latest_post_container" style="background-color:rgba(0, 0, 0, 0.82)">
+                    <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+                            @{Html.RenderAction("TinNoiBat", "TinTuc");}
+                    <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contentSection">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="left_content">
+                <div class="single_post_content">
+                    <h2><span>Tin Espost</span></h2>
+                    <div class="single_post_content_left">
+                        <ul class=" business_catgnav wow fadeindown">
+                            <li>
+                                @{Html.RenderAction("TopTinEsport", "TinTuc");}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="single_post_content_right">
+                        @{Html.RenderAction("TinEsport", "TinTuc");}
+                    </div>
+                    </div>
+                <div class="fashion_technology_area">
+                    <div class="fashion">
+                        <div class="single_post_content">
+                            <h2><span>Cẩm Nang</span></h2>
+                            <ul class="business_catgnav wow fadeInDown">
+                                @{Html.RenderAction("TopCamNang", "TinTuc");}
+                            </ul>
+                            <ul class="spost_nav">
+                                @{Html.RenderAction("TinCamNang", "TinTuc");}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="technology">
+                        <div class="single_post_content">
+                            <h2><span>Cộng Đồng</span></h2>
+                            <ul class="business_catgnav">
+                                @{Html.RenderAction("TopCongDong", "TinTuc");}
+                            </ul>
+                            <ul class="spost_nav">
+                                @{Html.RenderAction("TinCongDong", "TinTuc");}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="single_post_content">
+                    <h2><span>Tin Game</span></h2>
+                    <div class="single_post_content_left">
+                        <ul class="business_catgnav">
+                            @{Html.RenderAction("TopTinGame", "TinTuc");}
+                        </ul>
+                    </div>
+                    <div class="single_post_content_right">
+                        <ul class="spost_nav">
+                            @{Html.RenderAction("TinGame", "TinTuc");}
+                        </ul>
+                    </div>
+                </div>
+                <div class="single_post_content">
+                        <h2><span>Hình Cosplay</span></h2>
+                        <ul class="photograph_nav  wow fadeInDown">
+                            @{Html.RenderAction("HinhAnh", "TinTuc");}
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <aside class="right_content">
+                <div class="single_sidebar">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="category">
+                            <ul>
+                                @{Html.RenderAction("Category","TinTuc");}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                    @{Html.RenderAction("BangQuangCao","TinTuc");}
+                <div class="single_sidebar wow fadeInDown">
+                    <h2><span>Links</span></h2>
+                    <ul>
+                        <li><a href="https://www.facebook.com/Lienminh24711">Fanpage</a></li>
+                        <li><a href="@Url.Action("LogIn","Admin")">Login</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

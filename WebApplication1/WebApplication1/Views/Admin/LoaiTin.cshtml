@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication1.Models.LoaiTin>
+
+@{
+    ViewBag.Title = "LoaiTin";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h2>Danh Sách Thể Loại Hiện Có</h2>
+    <p>
+        @Html.ActionLink("Thêm Thể Loại", "CreateLoaiTin")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tên Loại Tin
+            </th>
+            <th>
+                Lựa Chọn
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLoaiTin)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh Sửa", "EditLoaiTin", new { id = item.LoaiTinID }) |
+                    @Html.ActionLink("Xóa", "DeleteLoaiTin", new { id = item.LoaiTinID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

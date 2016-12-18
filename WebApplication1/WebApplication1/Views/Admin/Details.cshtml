@@ -1,0 +1,79 @@
+﻿@model WebApplication1.Models.BangTin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<div>
+    <h4>Chi Tiết Bảng Tin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tiêu Đề
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            Ngày Đăng
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}",Model.NgayDang)
+        </dd>
+
+        <dt>
+            Mô Tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <hr />
+
+        <dt>
+            Ảnh Bìa
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhTin/"+ Model.AnhBiaTin)" width="120"/>
+        </dd>
+
+        <hr />
+
+        <dt>
+            Loại Tin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTin.TenLoaiTin)
+        </dd>
+
+        <dt>
+            Tác Giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.AdminID)
+        </dd>
+
+        <hr />
+
+        <dt>
+            Nội Dung
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NoiDung)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.BangTinID }) |
+    @Html.ActionLink("Quay Về", "TinTuc")
+</p>

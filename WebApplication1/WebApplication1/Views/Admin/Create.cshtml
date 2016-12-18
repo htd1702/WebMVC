@@ -1,0 +1,81 @@
+﻿@model WebApplication1.Models.BangTin
+<script src="~/ckeditor/ckeditor.js"></script>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Admin", FormMethod.Post, new { @enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Đăng Bài</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h5 class="col-md-2" style="text-align:center">Tiêu Đề</h5>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input type="text" name="TieuDe" />
+                @Html.ValidationMessageFor(model => model.TieuDe)
+                <h5 style="color:red">@ViewData["Loi1"]</h5>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="col-md-2" style="text-align:center">Ngày Đăng</h5>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.NgayDang, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input type="date" name="NgayDang"/>
+                <h5 style="color:red">@ViewData["Loi5"]</h5>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="col-md-2" style="text-align:center">Mô Tả</h5>
+            <div class="col-md-10">
+                <textarea name="MoTa"></textarea>
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                <h5 style="color:red">@ViewData["Loi2"]</h5>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="col-md-2" style="text-align:center">Ảnh Bìa</h5>
+            <div class="col-md-10">
+                <input type="file" name="fileupload" />
+                <h5 style="color:red">@ViewData["Loi4"]</h5>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="col-md-2" style="text-align:center">Loại Tin</h5>
+            <div class="col-md-10">
+                @Html.DropDownList("LoaiTinID")
+                @Html.ValidationMessageFor(model => model.LoaiTinID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="col-md-2" style="text-align:center">Nội Dung</h5>
+            <div class="col-md-10">
+                <textarea name="Noidung"></textarea>
+                <h5 style="color:red">@ViewData["Loi3"]</h5>
+            </div>
+        </div>
+
+         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng Bài" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Trở về", "TinTuc")
+</div>
+<script>
+    CKEDITOR.replace('Noidung')
+</script>
+

@@ -1,0 +1,83 @@
+﻿@model WebApplication1.Models.BangTin
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Xóa Bảng Tin !!!</h2>
+
+<h3>Bạn chắc muốn xóa bảng tin này chứ ?</h3>
+<div>
+    <h4>Bảng Tin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tiêu Đề
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+        <hr />
+        <dt>
+            Ngày đăng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+        <hr />
+        <dt>
+            Mô Tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+        <hr />
+        <dt>
+            Ảnh Bìa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhBiaTin)
+            <img src="@Url.Content("~/HinhTin/" + Model.AnhBiaTin)" width="120" style="padding-top:10px" />
+        </dd>
+        <hr />
+        <dt>
+            Loại Tin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTin.TenLoaiTin)
+        </dd>
+        <hr />
+        <dt>
+            Tác Giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.AdminID)
+        </dd>
+        <hr />
+        <dt>
+            Nội Dung
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NoiDung);
+        </dd>
+        <hr />
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "TinTuc")
+        </div>
+    }
+</div>

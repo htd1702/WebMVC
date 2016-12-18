@@ -1,0 +1,66 @@
+﻿@model WebApplication1.Models.Admin
+
+@{
+    ViewBag.Title = "DeleteAdmin";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Xóa Admin</h2>
+<br />
+<h3>Xóa admin sẽ không thể khôi phục dữ liệu cũng như đăng nhập!</h3>
+<h3>Bạn chắc muốn xóa chứ?</h3>
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ Tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+        <br />
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <br />
+        <dt>
+            Giới Tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+        <br />
+        <dt>
+            Số Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+        <br />
+        <dt>
+            Tên Đăng Nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở Về", "Admin")
+        </div>
+    }
+</div>

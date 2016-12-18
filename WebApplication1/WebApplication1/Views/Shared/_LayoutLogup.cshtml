@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lienminh247 Login &amp; Register</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link href="~/Content/Admincss/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <link href="~/Content/Admincss/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/form-elements.css">
+    <link href="~/Content/Admincss/css/form-elements.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="~/Content/Admincss/css/style.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="~Content/Admincss/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/Admincss/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/Admincss/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/Admincss/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Content/Admincss/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<body>
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-8 col-xs-8 col-sm-offset-2 col-xs-offset-2 text">
+                        <h1><strong>Lienminh247</strong>| Đăng Kí |</h1>
+                        <div class="description">
+                            <p>
+                                Chào mừng các bạn đến với trang tin Lienminh247 <br> | Hãy trở thành 1 thành viên trong cộng đồng Lienminh247 nhé |
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-8 col-xs-8 col-sm-offset-2 col-xs-offset-2">
+
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Đăng ký nhanh!</h3>
+                                <p>Điền đầy đủ thông tin để đăng kí:</p>
+                                <h4 style="color:orangered; text-align:center">@ViewBag.Error</h4>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <div class="form-bottom">
+                                <form role="form" action="" method="post" class="registration-form">
+                                    <div class="form-group" id="HoTen">
+                                        <label class="sr-only" for="form-ID">Họ Tên</label>
+                                        <input type="text" name="form-hoten" placeholder="Họ Tên Của Bạn..." class="form-username form-control" id="form-ID">
+                                        @ViewData["Loi1"]
+                                    </div>
+                                    <div class="form-group" id="Email">
+                                        <label class="sr-only" for="form-email">Email</label>
+                                        <input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+                                        @ViewData["Loi2"]
+                                    </div>
+                                    <div class="form-group" id="SDT">
+                                        <label class="sr-only" for="form-about">SDT</label>
+                                        <input type="text" name="form-sdt" placeholder="Số điện thoại..." class="form-bottom form-control" id="form-email">
+                                        @ViewData["Loi3"]
+                                    </div>
+                                    <div class="form-group" id="GioiTinh">
+                                        <label class="sr-only" for="form-about">Giới Tính</label>
+                                        <input type="text" name="form-gioitinh" placeholder="Giới tính của bạn...." class="form-bottom form-control" id="form-email">
+                                        @ViewData["Loi4"]
+                                    </div>
+                                    <div class="form-group" id="TenDangNhap">
+                                        <label class="sr-only" for="form-ID">Tên Đăng Nhập</label>
+                                        <input type="text" name="form-ID" placeholder="Tên Đăng Nhập..." class="form-username form-control" id="form-ID">
+                                        @ViewData["Loi5"]
+                                    </div>
+                                    <div class="form-group" id="MatKhau">
+                                        <label class="sr-only" for="form-password">Mật Khẩu</label>
+                                        <input type="password" name="form-password" placeholder="Mật Khẩu..." class="form-password form-control" id="form-password">
+                                        @ViewData["Loi6"]
+                                        @ViewData["Loi7"]
+                                    </div>
+                                    <div class="form-group" id="MatKhau2">
+                                        <label class="sr-only" for="form-password">Re Mật Khẩu</label>
+                                        <input type="password" name="form-repassword" placeholder="Gõ Lại Mật Khẩu..." class="form-password form-control" id="form-password">
+                                        @ViewData["Loi8"]
+                                    </div>
+                                    <button type="submit" class="btn">Đăng Kí</button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+                @RenderBody()
+    <!--Javascript-->
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/Admincss/js/jquery-1.11.1.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admincss/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/js/jquery.backstretch.min.js"></script>
+    <script src="~/Content/Admincss/js/jquery.backstretch.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="~/Content/Admincss/js/scripts.js"></script>
+</body>
+</html>
+<noembed>

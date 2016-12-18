@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Chitiettin";
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+}
+    <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+            <div class="single_page">
+                <ol class="breadcrumb"></ol>
+                <h1 style="color:red; font-weight:bold">@Model.TieuDe</h1>
+                <h5 style="color:black">@Model.MoTa</h5>   
+                <div class="post_commentbox"> 
+                    <span><i class="fa fa-user" style="color:grey"> @Model.Admin.AdminID</i></span>                 
+                    <span><i class="fa fa-calendar" style="color:grey">@ViewBag.NgayDang</i></span></div>
+                <div class="single_page_content">
+                    <span>@Html.Raw(@Model.NoiDung)</span>
+                </div>
+                <div class="social_link">
+                    <div class="sociallink_nav">
+                        <div class="fb-like" data-href="http://www.lienminh247.somee.com/TinTuc/Chitiettin/@Model.BangTinID" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true" style="float:left"></div>
+                        <br />
+                        <div class="fb-comments" data-href="http://www.lienminh247.somee.com/TinTuc/Chitiettin/@Model.BangTinID" data-numposts="5" data-mobile="true"></div>
+                    </div>
+                </div>
+                <div class="related_post">
+                    <h2 style="color:red">Bài Viết Liên Quan<i class="fa fa-thumbs-o-up"></i></h2>
+                    <ul class="spost_nav wow fadeInDown animated">
+                        @{Html.RenderAction("TinLienQuan", "TinTuc");}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+

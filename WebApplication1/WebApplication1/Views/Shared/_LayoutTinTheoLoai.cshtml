@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tin Tức Liên Minh</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://tv.eslgaming.com/images/game/league-of-legends/logo.png">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/font.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/li-scroller.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/jquery.fancybox.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/HomeCss/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.min.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="container">
+        <header id=" header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="header_top">
+                    <div class="header_top_left">
+                        <ul class="top_nav">
+                            <li><a href="@Url.Action("Index","TinTuc")">Trang Chủ</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="header_top_right">
+                        <p class="fa-clock-o">@DateTime.Now</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class=" header_bottom" style="background:url(http://img.cdn.ved.com.vn/web/lmht360/wp-content/themes/_gameplay/images/bg.png)">
+                    <div class="logo_area"><a href="@Url.Action("Index","TinTuc")" class="logo"><img src="http://tv.eslgaming.com/images/game/league-of-legends/logo.png" alt="" style="width:70%"></a></div>
+                    @{Html.RenderAction("Banner", "TinTuc");}
+                </div>
+            </div>
+        </div>
+        </header>
+        <section id="navArea" style="background:url(http://img.cdn.ved.com.vn/web/lmht360/wp-content/themes/_gameplay/images/bg.png)">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav main_nav">
+                        @Html.Action("Theloai", "TinTuc")
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <section id="newsSection">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="latest_newsarea">
+                        <span>Tin Mới Nhất</span>
+                        <ul id="ticker01" class="news_sticker">
+                            @{Html.RenderAction("SlideTinMoi", "TinTuc");}
+                        </ul>
+                        <div class="social_area">
+                            <ul class="social_nav">
+                                <li class="facebook"><a href="https://www.facebook.com/Lienminh24711"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contentSection">
+            <div class="row">
+                @RenderBody()
+                <nav class="nav-slit">
+                    <a class="prev" href="#">
+                        <span class="icon-wrap"><i class="fa fa-angle-left"></i></span>
+                        @{Html.RenderAction("Bannerleft", "TinTuc");}
+                    </a> <a class="next" href="#">
+                        <span class="icon-wrap"><i class="fa fa-angle-right"></i></span>
+                        @{Html.RenderAction("Bannerright", "TinTuc");}
+                    </a>
+                </nav>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <aside class="right_content">
+                        <div class="latest_post">
+                            <h2><span>Tin Nổi Bật</span></h2>
+                            <div class="latest_post_container" style="background-color:rgba(0, 0, 0, 0.82)">
+                                <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+                                @{Html.RenderAction("TinNoiBat", "TinTuc");}
+                                <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+                            </div>
+                        </div>
+                        <div class="single_sidebar">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="category">
+                                    <ul>
+                                        @{Html.RenderAction("Category", "TinTuc");}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @{Html.RenderAction("BangQuangCao", "TinTuc");}
+                        <div class="single_sidebar wow fadeInDown">
+                            <h2><span>Links</span></h2>
+                            <ul>
+                                <li><a href="https://www.facebook.com/Lienminh24711">Fanpage</a></li>
+                                <li><a href="@Url.Action("LogIn","Admin")">Login</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            <div class="footer_bottom">
+                <p class="copyright">Copyright &copy; 2016 <a href="@Url.Action("Index","TinTuc")">LienMinh247</a></p>
+                <p class="developer" style="color:white">Developed By LienMinh247 Developer</p>
+            </div>
+        </footer>
+    </div>
+    <script src="~/Content/HomeCss/js/jquery.min.js"></script>
+    <script src="~/Content/HomeCss/js/wow.min.js"></script>
+    <script src="~/Content/HomeCss/js/bootstrap.min.js"></script>
+    <script src="~/Content/HomeCss/js/slick.min.js"></script>
+    <script src="~/Content/HomeCss/js/jquery.li-scroller.1.0.js"></script>
+    <script src="~/Content/HomeCss/js/jquery.newsTicker.min.js"></script>
+    <script src="~/Content/HomeCss/js/jquery.fancybox.pack.js"></script>
+    <script src="~/Content/HomeCss/js/custom.js"></script>
+    <div id="fb-root"></div>
+    <script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=171076406675752";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <div id="fb-root"></div>
+    <script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <div id="fb-root"></div>
+    <script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=1174437682635941";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
+<noembed>

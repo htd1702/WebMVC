@@ -1,0 +1,11 @@
+﻿<ul class="latest_postnav" style="min-height:385px">
+    @foreach (var item in Model)
+    {
+        <li>
+            <div class="media">
+                <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @item.BangTinID })" class="media-left"> <img alt="" src="~/HinhTin/@item.AnhBiaTin"> </a>
+                <div class="media-body"> <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @item.BangTinID })" class="catg_title" style="color:white">@item.TieuDe</a> </div>
+            </div>
+        </li>
+    }
+</ul>

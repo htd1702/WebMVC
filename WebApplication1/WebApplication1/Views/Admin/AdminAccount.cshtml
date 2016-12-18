@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Admin
+
+@{
+    ViewBag.Title = "AdminAccount";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Thông Tin Tài Khoản</h2>
+
+<div>
+    <h4>Admin @Session["Username"]</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ Tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Giới Tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            Số Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "EditAdmin", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

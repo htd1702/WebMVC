@@ -1,0 +1,40 @@
+﻿@using WebApplication1.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<BangTin>
+@{
+    ViewBag.Title = "Tintheotheloai";
+    Layout = "~/Views/Shared/_LayoutTinTheoLoai.cshtml";
+}
+<div class="col-lg-8 col-md-8 col-sm-8">
+    <div class="left_content" style="background-color:rgba(0, 0, 0, 0.70); padding:10px 10px">
+        <ul class="spost_nav">
+            @foreach (var tin in Model)
+            {
+                <li>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @tin.BangTinID })"> <img alt="@tin.TieuDe" src="~/HinhTin/@tin.AnhBiaTin" width="200"> </a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <a href="@Url.Action("Chitiettin", "TinTuc", new { id = @tin.BangTinID })" class="catg_title">
+                                <h4 style="color:white">@tin.TieuDe</h4>
+                                <h5 style="color:lightgrey">
+                                    @tin.MoTa
+                                </h5>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+        <div class="page-menu">
+            @Html.PagedListPager(Model, page => Url.Action("Tintheotheloai", new { page = page }))
+        </div>
+    </div>
+</div>
+
+
+
+
+

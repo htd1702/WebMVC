@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.HinhAnh
+
+@{
+    ViewBag.Title = "DeleteHinhAnh";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Xóa Hình</h2>
+
+<h3>Bạn chắc là bạn muốn xóa tấm hình này chứ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Hình
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhAnh/" + Model.UrlHinh)" width="120" />
+        </dd>
+
+        <dt>
+            Ngày Đăng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangHinh)
+        </dd>
+
+        <dt>
+            Tựa đề
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuaDe)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Trở Về", "Hình Ảnh")
+        </div>
+    }
+</div>

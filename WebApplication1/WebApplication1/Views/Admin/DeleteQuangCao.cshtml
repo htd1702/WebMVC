@@ -1,0 +1,56 @@
+﻿@model WebApplication1.Models.QuangCao
+
+@{
+    ViewBag.Title = "DeleteQuangCao";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Xóa Biển Quảng Cáo</h2>
+
+<h3>Bạn chắc chắn là muốn xóa chứ ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Địa Chỉ Link Của Hình
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlHinh)
+        </dd>
+
+        <dt>
+            Vị Trí (1:banner top; 2:sponsor trang chủ; 3:banner left; 4:banner right)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViTri)
+        </dd>
+
+        <dt>
+            Ngày Đăng Lên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangLen)
+        </dd>
+
+        <dt>
+            Mô Tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở Về", "QuangCao")
+        </div>
+    }
+</div>

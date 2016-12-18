@@ -1,0 +1,90 @@
+﻿@model WebApplication1.Models.BangTin
+<script src="~/ckeditor/ckeditor.js"></script>
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Chỉnh sửa</h2>
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("Mã Bảng Tin:", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div style="font:18px; padding:5px 0 0 5px">@Model.BangTinID</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Tiêu Đề", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                @ViewData["Loi1"]
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Ngày Đăng", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayDang, new { htmlAttributes = new { @class = "form-control" } })
+                @ViewData["Loi2"]
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Mô Tả", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                @ViewData["Loi4"]
+            </div>
+        </div>
+                
+        <div class="form-group">
+            @Html.Label("Ảnh Bìa", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="fileupload" />
+                <img src="@Url.Content("~/HinhTin/" + Model.AnhBiaTin)" width="120" style="padding-top:10px" />(Ảnh hiện tại)
+                @ViewBag.Message
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Loại Tin", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("LoaiTinID")
+                @Html.ValidationMessageFor(model => model.LoaiTinID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Nội Dung", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea name="NoiDung">@Model.NoiDung</textarea>
+                @ViewData["Loi3"]
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở Về", "TinTuc")
+</div>
+
+<script>
+    CKEDITOR.replace('NoiDung');
+</script>
+

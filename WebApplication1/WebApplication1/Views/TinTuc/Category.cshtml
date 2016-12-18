@@ -1,0 +1,5 @@
+﻿
+@foreach (var item in Model)
+{ 
+    <li class="cat-item"><a href="@Url.Action("Tintheotheloai","TinTuc",new{id=item.LoaiTinID})">@item.TenLoaiTin</a></li>
+}

@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.HinhAnh
+
+@{
+    ViewBag.Title = "CreateHinhAnh";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Thêm Hình</h2>
+
+@using (Html.BeginForm("CreateHinhAnh", "Admin", FormMethod.Post, new { @enctype="multipart/form-data"})) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Hình", new { @class = "col-md-2"})
+            <div class="col-md-10">
+                <input type="file" name="fileupload" />
+                <h5 style="color:red">@ViewData["Loi3"]</h5>
+                <h5 style="color:red">@ViewBag.Message</h5>
+</div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Ngày Đăng", new { @class = "col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="NgayDangHinh" />
+                @Html.ValidationMessageFor(model => model.NgayDangHinh, "", new { @class = "text-danger" })
+                <h5 style="color:red">@ViewData["Loi1"]</h5>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Tựa Đề", new { @class = "col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="TuaDe"/>
+                @Html.ValidationMessageFor(model => model.TuaDe, "", new { @class = "text-danger" })
+                <h5 style="color:red">@ViewData["Loi2"]</h5>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở Về", "HinhAnh")
+</div>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLTINTUC" Class="dbTinTucDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=704-PC;Initial Catalog=QLTINTUC;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLTINTUCConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.QuangCao" Member="QuangCaos">
+    <Type Name="QuangCao">
+      <Column Name="QuangCaoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UrlHinh" Type="System.String" DbType="NChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="ViTri" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDangLen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HinhAnh" Member="HinhAnhs">
+    <Type Name="HinhAnh">
+      <Column Name="HinhAnhID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UrlHinh" Type="System.String" DbType="NChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDangHinh" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TuaDe" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="MaAdmin" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="SDT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_BangTin" Member="BangTins" ThisKey="MaAdmin" OtherKey="MaAdmin" Type="BangTin" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BangTin" Member="BangTins">
+    <Type Name="BangTin">
+      <Column Name="BangTinID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TieuDe" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDang" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="AnhBiaTin" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="LoaiTinID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaAdmin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_BangTin" Member="Admin" ThisKey="MaAdmin" OtherKey="MaAdmin" Type="Admin" IsForeignKey="true" />
+      <Association Name="LoaiTin_BangTin" Member="LoaiTin" ThisKey="LoaiTinID" OtherKey="LoaiTinID" Type="LoaiTin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiTin" Member="LoaiTins">
+    <Type Name="LoaiTin">
+      <Column Name="LoaiTinID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenLoaiTin" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="LoaiTin_BangTin" Member="BangTins" ThisKey="LoaiTinID" OtherKey="LoaiTinID" Type="BangTin" />
+    </Type>
+  </Table>
+</Database>

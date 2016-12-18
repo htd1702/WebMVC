@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebApplication1.Models.HinhAnh>
+
+@foreach (var item in Model)
+{ 
+    <li>
+        <div class="photo_grid">
+            <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="~/HinhAnh/@item.UrlHinh.Trim()" title="@item.TuaDe"> <img src="~/HinhAnh/@item.UrlHinh" alt="@item.TuaDe" style="padding-bottom:65%"/> </a> </figure>
+        </div>
+    </li>
+}

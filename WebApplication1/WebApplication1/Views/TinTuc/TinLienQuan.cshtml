@@ -1,0 +1,9 @@
+﻿@foreach (var item in Model)
+{ 
+    <li>
+        <div class="media">
+            <a class="media-left" href="@Url.Action("Chitiettin", "TinTuc", new { id = item.BangTinID })"> <img src="~/HinhTin/@item.AnhBiaTin" alt="@item.TieuDe"> </a>
+            <div class="media-body"> <a class="catg_title" href="@Url.Action("Chitiettin", "TinTuc", new { id = item.BangTinID })" style="color:black" >@item.TieuDe</a> </div>
+        </div>
+    </li>
+}

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication1.Models.Admin>
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Danh Sách Admin</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "CreateAdmin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Họ Tên
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Giới Tính
+        </th>
+        <th>
+            Số Điện Thoại
+        </th>
+        <th>
+            Tên Truy Cập
+        </th>
+        <th>
+            Lựa Chọn
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GioiTinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdminID)
+        </td>
+        <td>
+            @Html.ActionLink("Xóa", "DeleteAdmin", new { id=item.MaAdmin })
+        </td>
+    </tr>
+}
+
+</table>
